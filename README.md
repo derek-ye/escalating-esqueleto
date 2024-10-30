@@ -56,5 +56,5 @@ Once you've completed the exercises, you may want to check against the existing 
 Once setup is complete, you can check out the current state of the database with `psql`
 
 ```
-psql -d escalatingesqueleto
+make db-connect
 ```
