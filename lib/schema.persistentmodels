@@ -1,0 +1,7 @@
+Flavor sql=flavors
+  Id UUID default=uuid_generate_v1mc
+  name Text
+  createdAt UTCTime MigrationOnly
+  updatedAt UTCTime MigrationOnly
+  deriving Eq
+  deriving Show
