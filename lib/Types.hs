@@ -55,7 +55,6 @@ instance PathPiece UUID where
   toPathPiece = toText
   fromPathPiece = fromText
 
-
 -- This type for DB is not very safe. It allows nested 'runDB's and lifting of arbitrary IO actions.
 -- It's also not thread-safe, ideally it would use a Pool of connections rather than one.
 -- However, it's good enough for these exercises, if a little simplified.
@@ -69,14 +68,13 @@ instance PathPiece UUID where
 -- We also include logging as required by 'withPostgresqlConn'
 type DB = SqlPersistT (LoggingT IO)
 
--- mkSqlBackend :: MkSqlBackendArgs -> SqlBackend
-
+-- Run a DB action (e.g., an esqueleto `select` query)
+-- This uses the connection string to connect to the database, run your
+-- esqueleto as SQL, and log to standard out along the way.
 runDB :: DB a -> IO a
 runDB action = runStdoutLoggingT $ withPostgresqlConn connectionString $ \backend ->
   runSqlConn action backend
 
+-- Basic information needed to connect to a local postgres instance
 connectionString :: ConnectionString
 connectionString = "host=127.0.0.1 port=5432 user=escalatingesqueleto dbname=escalatingesqueleto"
-
--- migrateDB :: IO ()
--- migrateDB = runDB $ runMigration migrateAll
