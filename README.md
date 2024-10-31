@@ -10,7 +10,7 @@ Our goal is to be able to see through any esqueleto query to the SQL underneath.
 
 ### Database setup
 
-You'll need `postgres` installed. If you've already run bootstrap-mercury on your machine, you should have it. Check by running `postgres --version`
+You'll need `postgres` installed. If you've already run `bootstrap-mercury` on your machine, you should have it. Check by running `postgres --version`
 
 Set up a local database:
 
@@ -72,4 +72,4 @@ make db-connect
 
 :warning: `answers/*.hs` contains spoilers
 
-Once you've completed some exercises, you may want to check against the existing answers. Make sure to complete all the exercises in a file before doing this---the point is that you learn, not that you type out the correct answers as quickly as possible. The corresponding answers file for `exercises/X.hs` is `answers/X.hs`.
+Once you've completed some exercises, you may want to check against the existing answers. Make sure to complete all the exercises in a file before doing this—the point is that you learn, not that you type out the correct answers as quickly as possible. The corresponding answers file for `exercises/X.hs` is `answers/X.hs`.
