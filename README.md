@@ -10,7 +10,9 @@ Our goal is to be able to see through any esqueleto query to the SQL underneath.
 
 ### Database setup
 
-Set up a local postgres instance:
+You'll need `postgres` installed. If you've already run bootstrap-mercury on your machine, you should have it. Check by running `postgres --version`
+
+Set up a local database:
 
 ```sh
 nix develop

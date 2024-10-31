@@ -11,7 +11,7 @@ import Test.Hspec
 main :: IO ()
 main = hspec $ do
   describe "EE00_StartingOut" $ do
-    it "iWantToLearnEsqueleto" $ do
+    fit "iWantToLearnEsqueleto" $ do
       Exercise.iWantToLearnEsqueleto `shouldBe` Answer.iWantToLearnEsqueleto
 
   fdescribe "EE01_Select" $ do
