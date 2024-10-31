@@ -5,8 +5,11 @@
 
 module Types where
 
+import Control.Monad.IO.Class (liftIO)
 import Control.Monad.Logger (runStdoutLoggingT, LoggingT)
 import Data.UUID (UUID, fromASCIIBytes, toASCIIBytes, toText, fromText)
+import Database.Esqueleto.Experimental
+import Database.Esqueleto.Internal.Internal (renderQueryToText, Mode(..))
 import Database.Persist
   ( PersistField(..)
   , PersistValue(PersistLiteral_)
@@ -24,7 +27,10 @@ import Database.Persist.Sql
   )
 import Data.Text qualified as T
 import Data.Text (Text)
+import System.Exit (exitFailure)
 import Web.PathPieces (PathPiece(..))
+
+-- CUSTOM TYPES --
 
 -- 'PersistField' lets us convert a type (in this case a 'UUID') to and from a 'PersistValue'
 -- 'PersistValue's can be stored in the database
@@ -54,6 +60,9 @@ instance PersistFieldSql UUID where
 instance PathPiece UUID where
   toPathPiece = toText
   fromPathPiece = fromText
+
+
+-- DB MONAD --
 
 -- This type for DB is not very safe. It allows nested 'runDB's and lifting of arbitrary IO actions.
 -- It's also not thread-safe, ideally it would use a Pool of connections rather than one.

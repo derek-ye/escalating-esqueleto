@@ -47,16 +47,29 @@ If you change `describe` to `fdescribe` in `test/Main.hs`, you can focus on a si
 + fdescribe "EE00_StartingOut" $ do
 ```
 
-### Check your work
+### Viewing rendered queries
 
-`answers/*.hs` contains spoilers
+Because this repo's version of `runDB` logs to stdout, your queries can be seen in generated SQL form by looking for the `[Debug#SQL]` tag in the logs. It's often useful to check your intuition against the SQL your code is actually producing.
 
-Once you've completed the exercises, you may want to check against the existing answers. Make sure to complete all the exercises in a file before doing this---the point is that you learn, not that you type out the correct answers as quickly as possible. The corresponding answers file for `exercises/X.hs` is `answers/X.hs`.
+```
+EE00_Test
+[Debug#SQL] SELECT "test"."column"
+FROM "test"
+; []
+  testName [✔]
+  anotherTest [✘]
+```
 
 ### Poking around in the database
 
-Once setup is complete, you can check out the current state of the database with `psql`
+Once setup is complete, you can check out the current state of the database with `psql`. This might be useful to write or validate raw SQL queries, but I encourage you to start thinking in esqueleto directly rather than always translating.
 
 ```
 make db-connect
 ```
+
+### Check your work
+
+:warning: `answers/*.hs` contains spoilers
+
+Once you've completed some exercises, you may want to check against the existing answers. Make sure to complete all the exercises in a file before doing this---the point is that you learn, not that you type out the correct answers as quickly as possible. The corresponding answers file for `exercises/X.hs` is `answers/X.hs`.

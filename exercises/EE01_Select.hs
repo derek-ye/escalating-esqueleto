@@ -1,7 +1,9 @@
+{-# LANGUAGE TypeApplications #-}
+
 module EE01_Select where
 
 import Data.Text (Text)
-import Database.Esqueleto
+import Database.Esqueleto.Experimental
 import Schema
 import Types
 

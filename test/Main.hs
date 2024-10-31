@@ -11,10 +11,10 @@ import Test.Hspec
 main :: IO ()
 main = hspec $ do
   describe "EE00_StartingOut" $ do
-    fit "iWantToLearnEsqueleto" $ do
+    it "iWantToLearnEsqueleto" $ do
       Exercise.iWantToLearnEsqueleto `shouldBe` Answer.iWantToLearnEsqueleto
 
-  fdescribe "EE01_Select" $ do
+  describe "EE01_Select" $ do
     it "allFlavors" $ do
       Exercise.allFlavors `shouldMatchListRunDB` Answer.allFlavors
 

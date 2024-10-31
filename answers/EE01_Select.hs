@@ -3,14 +3,14 @@
 module EE01_Select where
 
 import Data.Text (Text)
-import Database.Esqueleto
+import Database.Esqueleto.Experimental
 import Schema
 import Types
 
 allFlavors :: DB [Entity Flavor]
 allFlavors = do
-  select $ from $ \flavor -> do
-    pure flavor
+  select $ from $ table @Flavor
+  -- select $ from $ table @Flavor
 
 allFlavorNames :: DB [Text]
 allFlavorNames = do
