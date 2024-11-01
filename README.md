@@ -10,8 +10,6 @@ Our goal is to be able to see through any esqueleto query to the SQL underneath.
 
 ### Database setup
 
-You'll need `postgres` installed. If you've already run `bootstrap-mercury` on your machine, you should have it. Check by running `postgres --version`
-
 Set up a local database:
 
 ```sh
@@ -19,7 +17,7 @@ nix develop
 make db-create
 ```
 
-You can reset database state (including populating it with fake data) with:
+You can reset database state (including repopulating it with fake data) with:
 
 ```
 make db-reset
@@ -46,6 +44,8 @@ If you change `describe` to `fdescribe` in `test/Main.hs`, you can focus on a si
 - describe "EE00_StartingOut" $ do
 + fdescribe "EE00_StartingOut" $ do
 ```
+
+Similarly, if you change `it` to `fit` you can focus on a single test.
 
 ### Viewing rendered queries
 
