@@ -5,6 +5,7 @@ test:
 # one-time setup
 db-create:
 	createdb escalatingesqueleto
+	make db-reset
 
 # run whenever you want a freshly populated db
 db-reset:
