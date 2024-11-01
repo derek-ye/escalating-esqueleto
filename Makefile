@@ -3,9 +3,8 @@ test:
 	cabal test
 
 # one-time setup
-db-setup:
+db-create:
 	createdb escalatingesqueleto
-	psql escalatingesqueleto < setup.sql
 
 # run whenever you want a freshly populated db
 db-reset:

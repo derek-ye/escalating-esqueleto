@@ -9,15 +9,18 @@
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE UndecidableInstances #-}
 
 module Schema where
 
-import Data.UUID (UUID)
-import Database.Persist.TH (mkPersist, persistFileWith, share, sqlSettings)
-import Database.Persist.Quasi (lowerCaseSettings)
+import Data.Aeson (Value)
 import Data.Text (Text)
+import Data.Time.Calendar (Day)
 import Data.Time.Clock (UTCTime)
+import Data.UUID (UUID)
+import Database.Persist.Quasi (lowerCaseSettings)
+import Database.Persist.TH (mkPersist, persistFileWith, share, sqlSettings)
 import Types
 
 -- This uses Template Haskell to load in the schema.persistentmodels file

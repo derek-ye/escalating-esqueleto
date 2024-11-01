@@ -1,7 +1,6 @@
 module EE00_StartingOut where
 
--- TODO: to ensure your setup is working, replace the typed hole below with a
--- boolean value
+-- To ensure your setup is working, replace the typed hole below with a boolean value
 iWantToLearnEsqueleto :: Bool
 iWantToLearnEsqueleto = _
 

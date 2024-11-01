@@ -1,7 +1,39 @@
 Flavor sql=flavors
   Id UUID default=uuid_generate_v1mc
-  name Text
+  name Text Unique
+  UniqueFlavorName name
+  dairyFree Bool
   createdAt UTCTime MigrationOnly
   updatedAt UTCTime MigrationOnly
-  deriving Eq
-  deriving Show
+  deriving Eq Show
+
+Customer sql=customers
+  Id UUID default=uuid_generate_v1mc
+  name Text
+  email Email Unique
+  UniqueCustomerEmail email
+  birthday Day Maybe
+  favoriteFlavor FlavorId Maybe
+  createdAt UTCTime MigrationOnly
+  updatedAt UTCTime MigrationOnly
+  deriving Eq Show
+
+Purchase sql=purchases !allColumnsImmutableByDefault
+  Id UUID default=uuid_generate_v1mc
+  customerId CustomerId
+  amount Dollar
+  purchaseKind PurchaseKind -- Cash | Credit | Debit | ACH | Wire
+  notes Value Maybe sqltype=jsonb -- 'Value' here is from Aeson, not Esqueleto
+  createdAt UTCTime
+  updatedAt UTCTime MigrationOnly
+  deriving Eq Show
+
+CustomerLinkParent sql=customer_link_parents
+  Id UUID default=uuid_generate_v1mc()
+  deriving Eq Show
+
+CustomerLink sql=customer_links
+  Id UUID default=uuid_generate_v1mc()
+  parentLinkId CustomerLinkParentId OnDeleteCascade
+  customerId CustomerId OnDeleteCascade
+  deriving Eq Show

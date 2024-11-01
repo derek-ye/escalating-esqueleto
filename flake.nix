@@ -28,6 +28,8 @@
               hspkgs.cabal-install
               hspkgs.hlint
               pkgs.bashInteractive
+              pkgs.pcre
+              pkgs.postgresql
             ];
           };
           defaultPackage = pkgs.escalating-esqueleto;

@@ -16,7 +16,7 @@ Set up a local database:
 
 ```sh
 nix develop
-make db-setup
+make db-create
 ```
 
 You can reset database state (including populating it with fake data) with:
@@ -60,6 +60,12 @@ FROM "test"
   anotherTest [✘]
 ```
 
+### Hints
+
+There are hints for some of the exercises in the `hints/` directory, if you get stuck.
+
+You could also read these for additional commentary after completing an exercise.
+
 ### Poking around in the database
 
 Once setup is complete, you can check out the current state of the database with `psql`. This might be useful to write or validate raw SQL queries, but I encourage you to start thinking in esqueleto directly rather than always translating.
@@ -72,4 +78,4 @@ make db-connect
 
 :warning: `answers/*.hs` contains spoilers
 
-Once you've completed some exercises, you may want to check against the existing answers. Make sure to complete all the exercises in a file before doing this—the point is that you learn, not that you type out the correct answers as quickly as possible. The corresponding answers file for `exercises/X.hs` is `answers/X.hs`.
+Once you've completed an exercise, you may want to check against an existing answer. These are located in the `answers/` directory. The `answers/` files often contain additional commentary, such as pointing out footguns. To minimize spoilers, they're separated into one file per exercise.

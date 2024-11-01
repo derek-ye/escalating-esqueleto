@@ -1,5 +1,3 @@
-{-# LANGUAGE TypeApplications #-}
-
 module EE01_Select where
 
 import Data.Text (Text)
@@ -23,9 +21,55 @@ allFlavors = do
   _
 
 {-
-Actually I just want the flavor names. That would be:
+Actually I just want the flavor name values. That would be:
 SELECT flavors.name FROM flavors;
+
+Ensure you do this flavor->name projection in SQL, not after the fact in Haskell.
+-}
+allFlavorNameValues :: DB [Value Text]
+allFlavorNameValues = do
+  _
+
+{-
+Both queries above return lists of wrapped types. 'Entity' comes from persistent,
+and can be unwrapped into its components via 'entityKey' and 'entityVal'.
+
+'Value' comes from esqueleto. Can you remove the 'Value' wrapper to return a
+plain '[Text]'? Start by copying the previous query.
 -}
 allFlavorNames :: DB [Text]
 allFlavorNames = do
+  _
+
+{-
+Let's introduce WHERE clauses.
+A vegan just walked in. Provide all our dairy-free flavors.
+-}
+dairyFreeFlavors :: DB [Entity Flavor]
+dairyFreeFlavors = do
+  _
+
+{-
+We'd like to run a mildly nefarious targeted ad campaign. What are the emails
+of all our customers who haven't provided their birthday, but have
+provided a favorite flavor?
+
+Fill in the type as well.
+-}
+customersWithoutBirthdaysWithFlavors :: _
+customersWithoutBirthdaysWithFlavors = do
+  _
+
+{-
+Our founder's birthday is April 17th, and we're running a special.
+Who are our customers with a 4/17 birthday?
+
+Again, for efficiency you should do all filtering in SQL,
+not after the fact in Haskell.
+
+This one is much harder than the exercises above. Feel free to add more imports.
+If you need a hint, see hints/EE01_customersSharingFoundersBirthday.md
+-}
+customersSharingFoundersBirthday :: DB [Entity Customer]
+customersSharingFoundersBirthday = do
   _
