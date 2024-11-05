@@ -42,6 +42,7 @@ library escalating-esqueleto-exercises
   build-depends: escalating-esqueleto-lib
   other-modules: EE00_StartingOut
                , EE01_Select
+               , EE02_Join
   default-extensions: TypeApplications
                     , OverloadedRecordDot
                     , OverloadedStrings
@@ -64,6 +65,8 @@ library escalating-esqueleto-answers
                , EE01_dairyFreeFlavors
                , EE01_customersWithoutBirthdaysWithFlavors
                , EE01_customersSharingFoundersBirthday
+               , EE02_favoriteFlavors
+               , EE02_flavorPopularity
 
 test-suite escalating-esqueleto-test
   import:           common-options

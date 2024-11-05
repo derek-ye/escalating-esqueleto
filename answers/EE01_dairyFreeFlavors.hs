@@ -8,5 +8,5 @@ dairyFreeFlavors :: DB [Entity Flavor]
 dairyFreeFlavors = do
   select $ do
     flavor <- from $ table @Flavor
-    where_ $ flavor.dairyFree ==. val True -- note 'val' here
+    where_ $ flavor.dairyFree
     pure flavor

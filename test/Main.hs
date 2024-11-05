@@ -33,6 +33,13 @@ main = hspec $ do
     it "customersSharingFoundersBirthday" $ do
       Exercise.customersSharingFoundersBirthday `shouldMatchListRunDB` Answer.customersSharingFoundersBirthday
 
+  describe "EE02_Join" $ do
+    it "flavorPopularity" $ do
+      Exercise.flavorPopularity `shouldMatchListRunDB` Answer.flavorPopularity
+
+    it "noFavoriteFlavor" $ do
+      Exercise.favoriteFlavors `shouldMatchListRunDB` Answer.favoriteFlavors
+
 -- shouldBeRunDB :: (Eq a, Show a) => DB a -> DB a -> IO ()
 -- shouldBeRunDB exr ans = do
 --   exercise <- runDB exr
@@ -51,5 +58,6 @@ developTest _ignored ans = do
   let line = putStrLn . take 80 $ cycle "─"
   line
   answer <- runDB ans
-  print answer
+  let answerStr = show answer
+  putStrLn $ if length answerStr < 1000 then answerStr else take 1000 answerStr <> "... (output truncated)"
   line

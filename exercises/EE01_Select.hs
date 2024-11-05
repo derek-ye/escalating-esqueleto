@@ -15,6 +15,8 @@ Using esqueleto, can you get me everything we know about our flavors?
 
 The equivalent SQL would be:
 SELECT * FROM flavors;
+
+If you get stuck, you might want to read the hint in hints/EE01_allFlavors.md
 -}
 allFlavors :: DB [Entity Flavor]
 allFlavors = do
