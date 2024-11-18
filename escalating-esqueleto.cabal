@@ -67,6 +67,7 @@ library escalating-esqueleto-answers
                , EE01_customersSharingFoundersBirthday
                , EE02_favoriteFlavors
                , EE02_flavorPopularity
+               , EE02_largestGroup
 
 test-suite escalating-esqueleto-test
   import:           common-options

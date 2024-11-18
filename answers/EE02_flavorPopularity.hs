@@ -1,5 +1,6 @@
 module EE02_flavorPopularity where
 
+import Data.Coerce (coerce)
 import Data.Text (Text)
 import Database.Esqueleto.Experimental
 import Schema
@@ -34,5 +35,10 @@ flavorPopularity = do
 
     pure (flavor.name, countRows)
 
-  -- go from (Value Text, Value Int) to (Text, Int)
-  pure $ map (\(name, count') -> (unValue name, unValue count')) values
+  -- We could use `unValue` to go from `(Value Text, Value Int)` to `(Text, Int)`:
+  -- pure $ map (\(name, count') -> (unValue name, unValue count')) values
+
+  -- because `Value` is a newtype, you can instead just coerce. `countRows` is polymorphic though, over any `Num a`.
+  -- we give `values` a concrete type here to give the typechecker enough information to coerce
+  pure $ coerce (values :: [(Value Text, Value Int)])
+  -- another good option is to include this type annotation in a `values :: [(Value Text, Value Int)] <- select $ do` line above.

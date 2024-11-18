@@ -40,11 +40,14 @@ main = hspec $ do
     it "noFavoriteFlavor" $ do
       Exercise.favoriteFlavors `shouldMatchListRunDB` Answer.favoriteFlavors
 
--- shouldBeRunDB :: (Eq a, Show a) => DB a -> DB a -> IO ()
--- shouldBeRunDB exr ans = do
---   exercise <- runDB exr
---   answer <- runDB ans
---   exercise `shouldBe` answer
+    it "sizeOfLargestGroup" $ do
+      Exercise.largestGroup `shouldMatchListRunDB` Answer.largestGroup
+
+_shouldBeRunDB :: (Eq a, Show a) => DB a -> DB a -> IO ()
+_shouldBeRunDB exr ans = do
+  exercise <- runDB exr
+  answer <- runDB ans
+  exercise `shouldBe` answer
 
 shouldMatchListRunDB :: (Eq a, Show a) => DB [a] -> DB [a] -> IO ()
 shouldMatchListRunDB exr ans = do

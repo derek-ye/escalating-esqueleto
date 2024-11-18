@@ -374,7 +374,7 @@ DROP TABLE IF EXISTS purchases CASCADE;
 CREATE TABLE purchases
   ( id UUID PRIMARY KEY UNIQUE DEFAULT uuid_generate_v1mc()
   , customer_id UUID NOT NULL REFERENCES CUSTOMERS
-  , amount FLOAT NOT NULL
+  , amount NUMERIC(20, 2) NOT NULL
   , purchase_kind purchase_kind NOT NULL
   , notes jsonb
   , created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
@@ -1387,3 +1387,118 @@ INSERT INTO purchases VALUES
   (uuid_generate_v1mc(), (SELECT id FROM customers WHERE email='liam547@smith.net'), '115.43', 'ACH', null);
 
 GRANT SELECT, UPDATE, INSERT, DELETE ON purchases to escalatingesqueleto;
+
+
+-- CUSTOMERLINKPARENT and CUSTOMERLINK --
+
+
+DROP TABLE IF EXISTS customer_group_parents CASCADE;
+
+CREATE TABLE customer_group_parents
+  ( id UUID PRIMARY KEY UNIQUE DEFAULT uuid_generate_v1mc()
+  , created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+  , updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+  );
+
+CREATE TRIGGER customer_group_parents_insert BEFORE INSERT ON customer_group_parents FOR EACH ROW EXECUTE PROCEDURE create_timestamps();
+CREATE TRIGGER customer_group_parents_update BEFORE UPDATE ON customer_group_parents FOR EACH ROW EXECUTE PROCEDURE update_timestamps();
+
+GRANT SELECT, UPDATE, INSERT, DELETE ON customer_group_parents to escalatingesqueleto;
+
+
+DROP TABLE IF EXISTS customer_links CASCADE;
+
+CREATE TABLE customer_links
+  ( id UUID PRIMARY KEY UNIQUE DEFAULT uuid_generate_v1mc()
+  , parent_id UUID REFERENCES customer_group_parents
+  , customer_id UUID REFERENCES customers
+  , UNIQUE(parent_id, customer_id)
+  , created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+  , updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+  );
+
+CREATE TRIGGER customer_links_insert BEFORE INSERT ON customer_links FOR EACH ROW EXECUTE PROCEDURE create_timestamps();
+CREATE TRIGGER customer_links_update BEFORE UPDATE ON customer_links FOR EACH ROW EXECUTE PROCEDURE update_timestamps();
+
+GRANT SELECT, UPDATE, INSERT, DELETE ON customer_links to escalatingesqueleto;
+
+
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel208@thompson.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='patrick365@vasquez.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='felix728@miller.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='william667@harris.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='grace957@ivers.com'));
+
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel208@thompson.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='benjamin641@quinn.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='william667@harris.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena989@robinson.net'));
+
+-- single-person groups
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='felix845@young.me'));
+
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena989@robinson.net'));
+
+-- empty groups
+INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc());
+INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc());
+INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc());
+INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc());
+
+-- daniel group
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel208@thompson.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel720@lewis.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel825@anderson.net'));
+
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='isabella525@carter.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena744@harris.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='emma837@miller.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ruby970@carter.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ruby428@young.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena989@robinson.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='chloe263@young.net'));
+
+-- big group
+WITH parent AS (INSERT INTO customer_group_parents (id) VALUES (uuid_generate_v1mc()) RETURNING id)
+INSERT INTO customer_links VALUES
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='isabella525@carter.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena744@harris.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='emma837@miller.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ruby970@carter.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ruby428@young.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='xena989@robinson.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='henry443@davis.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='mia732@williams.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='jacob618@harris.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='emma361@smith.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='grace957@ivers.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ulysses565@williams.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='mia912@foster.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='kinsley980@king.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='daniel208@thompson.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='henry564@zimmerman.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='liam547@smith.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='isabella521@ivers.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='olivia582@brown.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='benjamin641@quinn.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='chloe263@young.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='ruby335@brown.com')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='quinn579@vasquez.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='taylor706@quinn.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='grace473@patel.net')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='taylor523@quinn.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='yara666@owens.me')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='william881@davis.org')),
+  (uuid_generate_v1mc(), (SELECT id FROM parent), (SELECT id FROM customers WHERE email='zoe931@king.org'));

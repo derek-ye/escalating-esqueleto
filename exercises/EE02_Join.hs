@@ -27,3 +27,11 @@ Sample results:
 -}
 flavorPopularity :: DB [(Text, Int)]
 flavorPopularity = _
+
+{-
+We have a concept of "groups" provided by CustomerLink and CustomerGroupParent.
+
+Who are all the customers in the largest group?
+-}
+largestGroup :: DB [Entity Customer]
+largestGroup = _
