@@ -121,5 +121,5 @@ fullOuterJoin :: (ToFrom a a', ToFrom b b', ToMaybe a', ToMaybe b', HasOnClause 
 Uncomment the type signature to get started
 -}
 
--- leftJoin :: (ToFrom a a', ToFrom b b', ToMaybe b', HasOnClause rhs (_), rhs ~ (b, _ -> SqlExpr (Value Bool))) => a -> rhs -> From (_)
+-- leftJoin :: (ToFrom a a', ToFrom b b', _, HasOnClause rhs (_), rhs ~ (b, _ -> SqlExpr (Value Bool))) => a -> rhs -> From (_)
 leftJoin = undefined
