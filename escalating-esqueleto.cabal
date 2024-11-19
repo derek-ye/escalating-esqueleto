@@ -64,6 +64,7 @@ library escalating-esqueleto-answers
                , EE01_allFlavorNameValues
                , EE01_allFlavorNames
                , EE01_dairyFreeFlavors
+               , EE01_flavorIdsFromNames
                , EE01_customersWithoutBirthdaysWithFlavors
                , EE01_customersSharingFoundersBirthday
                , EE02_favoriteFlavors

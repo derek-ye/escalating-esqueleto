@@ -52,6 +52,17 @@ dairyFreeFlavors = do
   _
 
 {-
+It's often convenient to look up FlavorIds from flavor names. For example:
+
+neapolitan <- runDB $ flavorIdsFromNames ["Chunky Chocolate", "Variegated Vanilla", "Smooth Strawberry"]
+
+Write a query that can take an argument of a list of flavor names, and get their IDs
+-}
+flavorIdsFromNames :: [Text] -> DB [FlavorId]
+flavorIdsFromNames flavorNames = do
+  _
+
+{-
 We'd like to run a mildly nefarious targeted ad campaign. What are the emails
 of all our customers who haven't provided their birthday, but have
 provided a favorite flavor?

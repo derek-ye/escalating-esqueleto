@@ -9,6 +9,7 @@ import EE01_allFlavors as Answers
 import EE01_allFlavorNameValues as Answers
 import EE01_allFlavorNames as Answers
 import EE01_dairyFreeFlavors as Answers
+import EE01_flavorIdsFromNames as Answers
 import EE01_customersWithoutBirthdaysWithFlavors as Answers
 import EE01_customersSharingFoundersBirthday as Answers
 

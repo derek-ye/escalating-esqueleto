@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 
 module Main (main) where
@@ -28,6 +29,10 @@ main = hspec $ do
 
     it "dairyFreeFlavors" $ do
       Exercise.dairyFreeFlavors `shouldMatchListRunDB` Answer.dairyFreeFlavors
+
+    it "flavorIdsFromNames" $ do
+      let neapolitan = ["Chunky Chocolate", "Variegated Vanilla", "Smooth Strawberry"]
+      Exercise.flavorIdsFromNames neapolitan `shouldMatchListRunDB` Answer.flavorIdsFromNames neapolitan
 
     it "customersWithoutBirthdaysWithFlavors" $ do
       Exercise.customersWithoutBirthdaysWithFlavors `shouldMatchListRunDB` Answer.customersWithoutBirthdaysWithFlavors
