@@ -15,3 +15,4 @@ import EE01_customersSharingFoundersBirthday as Answers
 import EE02_favoriteFlavors as Answers
 import EE02_flavorPopularity as Answers
 import EE02_largestGroup as Answers
+import EE02_customerGroups as Answers

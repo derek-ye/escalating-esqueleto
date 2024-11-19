@@ -35,3 +35,9 @@ Who are all the customers in the largest group?
 -}
 largestGroup :: DB [Entity Customer]
 largestGroup = _
+
+{-
+For each CustomerGroupParent, list its ID as well as the IDs of all the customers in that group.
+-}
+customerGroups :: DB [(CustomerGroupParentId, [CustomerId])]
+customerGroups  = _

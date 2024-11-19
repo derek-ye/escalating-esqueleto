@@ -2,7 +2,7 @@
 
 Esqueleto is a library that lets us write SQL queries with Haskell syntax and typechecking.
 
-This repo is a collection of esqueleto exercises, ordered by difficulty. They come with explanatory comments, a test suite, and sample answers.
+This repo is a collection of esqueleto exercises. They come with explanatory comments, a test suite, and sample answers.
 
 Our goal is to be able to see through any esqueleto query to the SQL underneath. Call it esq-ray vision.
 

@@ -43,6 +43,7 @@ library escalating-esqueleto-exercises
   other-modules: EE00_StartingOut
                , EE01_Select
                , EE02_Join
+               , EE03_TypeZoo
   default-extensions: TypeApplications
                     , OverloadedRecordDot
                     , OverloadedStrings
@@ -68,6 +69,7 @@ library escalating-esqueleto-answers
                , EE02_favoriteFlavors
                , EE02_flavorPopularity
                , EE02_largestGroup
+               , EE02_customerGroups
 
 test-suite escalating-esqueleto-test
   import:           common-options
