@@ -71,7 +71,7 @@ You could also read these for additional commentary after completing an exercise
 Once setup is complete, you can check out the current state of the database with `psql`. This might be useful to write or validate raw SQL queries, but I encourage you to start thinking in esqueleto directly rather than always translating.
 
 ```
-make db-connect
+make psql
 ```
 
 ### Check your work

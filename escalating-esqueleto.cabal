@@ -44,6 +44,7 @@ library escalating-esqueleto-exercises
                , EE01_Select
                , EE02_Join
                , EE03_TypeZoo
+               , EE04_Errors
   default-extensions: TypeApplications
                     , OverloadedRecordDot
                     , OverloadedStrings
@@ -71,6 +72,9 @@ library escalating-esqueleto-answers
                , EE02_flavorPopularity
                , EE02_largestGroup
                , EE02_customerGroups
+               , EE04_getChocolate
+               , EE04_mostPopularFlavor
+               , EE04_customerPurchases
 
 test-suite escalating-esqueleto-test
   import:           common-options

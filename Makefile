@@ -12,7 +12,7 @@ db-reset:
 	psql escalatingesqueleto < reset.sql
 
 # connect to the database via `psql`
-db-connect:
+psql:
 	psql -d escalatingesqueleto
 
 .PHONY: test

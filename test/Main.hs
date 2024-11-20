@@ -76,6 +76,16 @@ main = hspec $ do
     it "leftJoin" $ do
       checkedByHand False
 
+  describe "EE04_Errors" $ do
+    it "getChocolate" $ do
+      Exercise.getChocolate `shouldBeRunDB` Answer.getChocolate
+
+    it "mostPopularFlavor" $ do
+      Exercise.mostPopularFlavor `shouldBeRunDB` Answer.mostPopularFlavor
+
+    it "customerPurchases" $ do
+      Exercise.customerPurchases `shouldBeRunDB` Answer.customerPurchases
+
 checkedByHand :: Bool -> IO ()
 checkedByHand False = expectationFailure "Check this exercise by hand, then change False to True in the tests to mark it as completed."
 checkedByHand True = pure ()
@@ -102,7 +112,7 @@ shouldMatchMapRunDB exr ans = do
     sortNested (x, ys) = (x, sort ys)
 
 -- Used to check this repo's answers. You won't need it if you're doing the exercises.
-_developTest :: (Eq a, Show a) => ignored -> DB [a] -> IO ()
+_developTest :: (Eq a, Show a) => ignored -> DB a -> IO ()
 _developTest _ignored ans = do
   let line = putStrLn . take 80 $ cycle "─"
   line

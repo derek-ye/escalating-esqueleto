@@ -17,3 +17,7 @@ import EE02_favoriteFlavors as Answers
 import EE02_flavorPopularity as Answers
 import EE02_largestGroup as Answers
 import EE02_customerGroups as Answers
+
+import EE04_getChocolate as Answers
+import EE04_mostPopularFlavor as Answers
+import EE04_customerPurchases as Answers
