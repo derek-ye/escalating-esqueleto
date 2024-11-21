@@ -80,6 +80,9 @@ main = hspec $ do
     it "getChocolate" $ do
       Exercise.getChocolate `shouldBeRunDB` Answer.getChocolate
 
+    it "flavorNames" $ do
+      Exercise.flavorNames `shouldBeRunDB` Answer.flavorNames
+
     it "mostPopularFlavor" $ do
       Exercise.mostPopularFlavor `shouldBeRunDB` Answer.mostPopularFlavor
 

@@ -3,6 +3,7 @@
 module EE04_Errors where
 
 import Data.Coerce (coerce)
+import Data.Text (Text)
 import Database.Esqueleto.Experimental
 import Schema
 import Types
@@ -23,6 +24,14 @@ getChocolate = do
     flavor <- from $ table @Flavor
     where_ $ flavor.name == "Chunky Chocolate"
     pure flavor
+
+flavorNames :: DB [Text]
+flavorNames = do
+  select $ do
+    flavor <- from $ table @Flavor
+    pure $ unValue flavor.name
+    -- also check out the error message in this version of the last line:
+    -- pure $ fmap unValue flavor.name
 
 mostPopularFlavor :: DB (Maybe FlavorId)
 mostPopularFlavor = do

@@ -73,6 +73,7 @@ library escalating-esqueleto-answers
                , EE02_largestGroup
                , EE02_customerGroups
                , EE04_getChocolate
+               , EE04_flavorNames
                , EE04_mostPopularFlavor
                , EE04_customerPurchases
 
