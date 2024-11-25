@@ -10,7 +10,19 @@ select package:esqueleto
 table package:esqueleto
 ```
 
-We can use the `TypeApplications` language extension to tell `table` what type to use. For example:
+
+We're specifically using the versions from `Database.Esqueleto.Experimental`, which you can find with:
+
+```
+Database.Esqueleto.Experimental.from is:exact
+
+Database.Esqueleto.Experimental.select is:exact
+
+Database.Esqueleto.Experimental.table is:exact
+```
+
+
+We can use `@` syntax (from the `TypeApplications` language extension) to tell `table` what type to use. For example:
 
 ```hs
 table @Customer

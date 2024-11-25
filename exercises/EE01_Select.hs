@@ -1,5 +1,6 @@
 module EE01_Select where
 
+import Data.Coerce (coerce)
 import Data.Text (Text)
 import Database.Esqueleto.Experimental
 import Schema
@@ -17,6 +18,9 @@ The equivalent SQL would be:
 SELECT * FROM flavors;
 
 If you get stuck, you might want to read the hint in hints/EE01_allFlavors.md
+
+Once you're done, make sure to compare with the answer in answers/EE01_allFlavors.hs
+to see if there's any difference
 -}
 allFlavors :: DB [Entity Flavor]
 allFlavors = do

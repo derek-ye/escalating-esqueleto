@@ -11,7 +11,7 @@ flavorIdsFromNames flavorNames = do
   -- `fmap coerce` goes from DB `[Value FlavorId]` to `DB [FlavorId]`
   fmap coerce $ select $ do
     flavor <- from $ table @Flavor
-    -- consider what happens when a name in the list isn't a real flavor name
+    -- As a bonus, think about what happens when a name in the list isn't a real flavor name
     where_ $ flavor.name `in_` valList flavorNames
     pure flavor.id
 

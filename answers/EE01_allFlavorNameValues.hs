@@ -10,5 +10,5 @@ import Types
 allFlavorNameValues :: DB [Value Text]
 allFlavorNameValues = do
   select $ do
-    flavor <- from $ table @Flavor
-    pure flavor.name
+    flavor <- from $ table @Flavor -- get `Flavor` `Entity`s from the table
+    pure flavor.name -- project the name field specifically
