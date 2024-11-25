@@ -11,4 +11,4 @@ allFlavorNameValues :: DB [Value Text]
 allFlavorNameValues = do
   select $ do
     flavor <- from $ table @Flavor
-    pure $ flavor.name
+    pure flavor.name

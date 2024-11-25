@@ -81,13 +81,16 @@ main = hspec $ do
       Exercise.getChocolate `shouldBeRunDB` Answer.getChocolate
 
     it "flavorNames" $ do
-      Exercise.flavorNames `shouldBeRunDB` Answer.flavorNames
+      Exercise.flavorNames `shouldMatchListRunDB` Answer.flavorNames
+
+    it "flavorNameValues" $ do
+      Exercise.flavorNameValues `shouldMatchListRunDB` Answer.flavorNameValues
 
     it "mostPopularFlavor" $ do
       Exercise.mostPopularFlavor `shouldBeRunDB` Answer.mostPopularFlavor
 
     it "customerPurchases" $ do
-      Exercise.customerPurchases `shouldBeRunDB` Answer.customerPurchases
+      Exercise.customerPurchases `shouldMatchListRunDB` Answer.customerPurchases
 
 checkedByHand :: Bool -> IO ()
 checkedByHand False = expectationFailure "Check this exercise by hand, then change False to True in the tests to mark it as completed."

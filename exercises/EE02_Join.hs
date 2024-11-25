@@ -17,11 +17,13 @@ favoriteFlavors = _
 We'd like to determine the popularity of each flavor.
 
 Return a list of each flavor name along with how many customers have it as
-their favorite flavor. Sort it by popularity, in descending order.
+their favorite flavor. Sort it by popularity in descending order,
+and then alphabetically by name.
 
 Sample results:
 [ ("Chunky Chocolate", 27)
 , ("Smooth Strawberry", 12)
+, ("Coconut Cream", 3)
 , ("Variegated Vanilla", 3)
 ]
 -}

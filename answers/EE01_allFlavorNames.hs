@@ -10,7 +10,7 @@ allFlavorNames :: DB [Text]
 allFlavorNames = do
   values <- select $ do
     flavor <- from $ table @Flavor
-    pure $ flavor.name
+    pure flavor.name
 
   -- one way to handle `Value Text -> Text` is with `unValue`:
   -- pure $ map unValue values

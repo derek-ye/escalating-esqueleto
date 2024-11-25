@@ -31,7 +31,7 @@ flavorPopularity = do
     -- `countRows` is the equivalent of `COUNT(*)`. It has type:
     -- countRows :: Num a => SqlExpr (Value a)
     -- so we specify that `Num` to be an `Int` here
-    orderBy [desc (countRows :: SqlExpr (Value Int))]
+    orderBy [desc (countRows :: SqlExpr (Value Int)), asc flavor.name]
 
     pure (flavor.name, countRows)
 

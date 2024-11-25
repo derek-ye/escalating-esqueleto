@@ -11,7 +11,7 @@ common common-options
   ghc-options: -Wall -fdefer-typed-holes
   build-depends: base
                , bytestring ^>=0.11
-               , aeson ^>=2.2
+               , aeson ^>=2.1
                , esqueleto ^>=3.5
                , monad-logger ^>=0.3
                , mtl ^>=2.3

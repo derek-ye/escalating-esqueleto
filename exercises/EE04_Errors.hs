@@ -33,6 +33,11 @@ flavorNames = do
     -- also check out the error message in this version of the last line:
     -- pure $ fmap unValue flavor.name
 
+flavorNameValues :: DB [Value Text]
+flavorNameValues = do
+  flavors <- select $ from $ table @Flavor
+  pure $ map (\f -> f.name) flavor.name
+
 mostPopularFlavor :: DB (Maybe FlavorId)
 mostPopularFlavor = do
   selectOne $ do
