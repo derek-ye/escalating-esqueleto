@@ -30,6 +30,7 @@
               pkgs.bashInteractive
               pkgs.pcre
               pkgs.postgresql
+              pkgs.fswatch
             ];
           };
           defaultPackage = pkgs.escalating-esqueleto;

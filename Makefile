@@ -15,4 +15,11 @@ db-reset:
 psql:
 	psql -d escalatingesqueleto
 
-.PHONY: test
+# simple filewatcher that reruns `cabal test` on changes
+watch:
+	fswatch -o exercises/* test/* | (while read -r event; do cabal test; done)
+
+	# you could instead use a more advanced watcher like `ghciwatch`
+	# ghciwatch --watch exercises --watch test --enable-eval --clear --test-ghci Main.main
+
+.PHONY: test watch

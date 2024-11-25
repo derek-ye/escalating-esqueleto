@@ -3,7 +3,7 @@ module Answers
   )
 where
 
-import EE00_StartingOut as Answers
+import EE00_iWantToLearnEsqueleto as Answers
 
 import EE01_allFlavors as Answers
 import EE01_allFlavorNameValues as Answers

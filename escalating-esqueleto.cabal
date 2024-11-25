@@ -60,7 +60,7 @@ library escalating-esqueleto-answers
   default-extensions: TypeApplications
                     , OverloadedRecordDot
                     , OverloadedStrings
-  other-modules: EE00_StartingOut
+  other-modules: EE00_iWantToLearnEsqueleto
                , EE01_allFlavors
                , EE01_allFlavorNameValues
                , EE01_allFlavorNames
@@ -74,6 +74,7 @@ library escalating-esqueleto-answers
                , EE02_customerGroups
                , EE04_getChocolate
                , EE04_flavorNames
+               , EE04_flavorNameValues
                , EE04_mostPopularFlavor
                , EE04_customerPurchases
 

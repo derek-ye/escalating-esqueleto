@@ -1,4 +1,4 @@
-module EE00_StartingOut where
+module EE00_iWantToLearnEsqueleto where
 
 iWantToLearnEsqueleto :: Bool
 iWantToLearnEsqueleto = True
