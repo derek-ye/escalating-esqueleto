@@ -1,12 +1,12 @@
-module EE04_mostPopularFlavor where
+module EE4d_mostPopularFlavor where
 
 import Data.Coerce (coerce)
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-mostPopularFlavor :: DB (Maybe FlavorId)
-mostPopularFlavor = do
+d_mostPopularFlavor :: DB (Maybe FlavorId)
+d_mostPopularFlavor = do
   -- need to coerce or unValue
   fmap coerce $ selectOne $ do
     (_customer :& flavor) <- from $

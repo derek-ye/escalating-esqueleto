@@ -1,12 +1,12 @@
-module EE01_customersWithoutBirthdaysWithFlavors where
+module EE1f_customersWithoutBirthdaysWithFlavors where
 
 import Data.Coerce (coerce)
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-customersWithoutBirthdaysWithFlavors :: DB [Email]
-customersWithoutBirthdaysWithFlavors = do
+f_customersWithoutBirthdaysWithFlavors :: DB [Email]
+f_customersWithoutBirthdaysWithFlavors = do
   -- `fmap coerce` gets us from `DB [Value Email]` to `DB [Email]`
   fmap coerce $ select $ do
     customer <- from $ table @Customer

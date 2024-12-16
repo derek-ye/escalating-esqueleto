@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -fdefer-type-errors #-}
 
-module EE04_Errors where
+module EE4_Errors where
 
 import Data.Coerce (coerce)
 import Data.Text (Text)
@@ -18,28 +18,33 @@ try to fully understand what each type error is telling you, before fixing that
 specific problem and moving on to the next.
 -}
 
-getChocolate :: DB (Maybe (Entity Flavor))
-getChocolate = do
+a_getChocolate :: DB (Maybe (Entity Flavor))
+a_getChocolate = do
   selectOne $ do
     flavor <- from $ table @Flavor
     where_ $ flavor.name == "Chunky Chocolate"
     pure flavor
 
-flavorNames :: DB [Text]
-flavorNames = do
+b_flavorNames :: DB [Text]
+b_flavorNames = do
   select $ do
     flavor <- from $ table @Flavor
     pure $ unValue flavor.name
-    -- also check out the error message in this version of the last line:
-    -- pure $ fmap unValue flavor.name
 
-flavorNameValues :: DB [Value Text]
-flavorNameValues = do
+-- also check out the error message in this version of the last exercise:
+-- b2_flavorNames :: DB [Text]
+-- b2_flavorNames = do
+--   select $ do
+--     flavor <- from $ table @Flavor
+--     pure $ fmap unValue flavor.name
+
+c_flavorNameValues :: DB [Value Text]
+c_flavorNameValues = do
   flavors <- select $ from $ table @Flavor
-  pure $ map (\f -> f.name) flavor.name
+  pure $ map (\f -> f.name) flavors
 
-mostPopularFlavor :: DB (Maybe FlavorId)
-mostPopularFlavor = do
+d_mostPopularFlavor :: DB (Maybe FlavorId)
+d_mostPopularFlavor = do
   selectOne $ do
     (_customer :& flavor) <- from $
       table @Customer `innerJoin` table @Flavor
@@ -48,8 +53,8 @@ mostPopularFlavor = do
     orderBy [desc countRows]
     pure flavor.id
 
-customerPurchases :: DB [(CustomerId, Dollar)]
-customerPurchases = do
+e_customerPurchases :: DB [(CustomerId, Dollar)]
+e_customerPurchases = do
   fmap coerce $ select $ do
     purchase <- from $ table @Purchase
     groupBy purchase.customerId

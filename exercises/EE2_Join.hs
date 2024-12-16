@@ -1,5 +1,6 @@
-module EE02_Join where
+module EE2_Join where
 
+import Data.Coerce (coerce)
 import Data.Text (Text)
 import Database.Esqueleto.Experimental
 import Schema
@@ -10,8 +11,8 @@ What are all our customers' favorite flavors?
 
 If they don't have one, give back a `Nothing`.
 -}
-favoriteFlavors :: DB [(Entity Customer, Maybe (Entity Flavor))]
-favoriteFlavors = _
+a_favoriteFlavors :: DB [(Entity Customer, Maybe (Entity Flavor))]
+a_favoriteFlavors = _
 
 {-
 We'd like to determine the popularity of each flavor.
@@ -27,19 +28,19 @@ Sample results:
 , ("Variegated Vanilla", 3)
 ]
 -}
-flavorPopularity :: DB [(Text, Int)]
-flavorPopularity = _
+b_flavorPopularity :: DB [(Text, Int)]
+b_flavorPopularity = _
 
 {-
 We have a concept of "groups" provided by CustomerLink and CustomerGroupParent.
 
 Who are all the customers in the largest group?
 -}
-largestGroup :: DB [Entity Customer]
-largestGroup = _
+c_largestGroup :: DB [Entity Customer]
+c_largestGroup = _
 
 {-
 For each CustomerGroupParent, list its ID as well as the IDs of all the customers in that group.
 -}
-customerGroups :: DB [(CustomerGroupParentId, [CustomerId])]
-customerGroups  = _
+d_customerGroups :: DB [(CustomerGroupParentId, [CustomerId])]
+d_customerGroups  = _

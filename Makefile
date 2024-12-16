@@ -6,6 +6,7 @@ test:
 db-create:
 	createdb escalatingesqueleto
 	make db-reset
+	cabal update
 
 # run whenever you want a freshly populated db
 db-reset:

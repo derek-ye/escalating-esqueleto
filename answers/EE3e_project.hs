@@ -1,4 +1,4 @@
-module EE03_project where
+module EE3e_project where
 
 import Database.Esqueleto.Experimental
 

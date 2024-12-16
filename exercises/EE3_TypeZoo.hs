@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 
-module EE03_TypeZoo where
+module EE3_TypeZoo where
 
 import Control.Monad.IO.Class (MonadIO)
 import Database.Esqueleto.Experimental
@@ -37,8 +37,8 @@ This DB monad matches up with the return type of esqueleto's `select` and simila
 {-
 runDB is a function that takes a DB action and actually runs it on the database
 -}
-runDB :: _
-runDB = undefined
+a_runDB :: _
+a_runDB = undefined
 
 {-
 There are a few main types it's nice to get familiar with at the outset.
@@ -56,7 +56,7 @@ You may have run into this before when trying to `unValue` in the wrong place.
 
 `Entity` comes from Persistent and represents a whole table, along with a primary key (id) for that table.
 
-`Value` comes from Esqueleto and represents a single column.
+`Value` comes from Esqueleto and represents a single field, or any standalone value.
 
 `PersistField` shuttles types between their database-storage versions, and their Haskell versions.
 
@@ -66,14 +66,14 @@ Finally, `:&` helps us construct joins. Its precedence is to the left.
 {-
 `select` returns a `DB` action to grab us a list of rows, and takes an argument...which is up to you to figure out
 -}
-select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> DB _
-select = undefined
+b_select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> DB _
+b_select = undefined
 
 {-
 `val` takes any plain Haskell type which is an instance of `PersistField` and lifts it into Esqueleto land. What's its type?
 -}
-val :: PersistField typ => typ -> _
-val = undefined
+c_val :: PersistField typ => typ -> _
+c_val = undefined
 
 {-
 Given these types for `asc` and `desc`:
@@ -81,7 +81,7 @@ Given these types for `asc` and `desc`:
 asc :: PersistField a => SqlExpr (Value a) -> SqlExpr OrderBy
 desc :: PersistField a => SqlExpr (Value a) -> SqlExpr OrderBy
 
-And these example lines:
+And these example usages:
 
 orderBy [asc flavor.name]
 orderBy [asc foo, desc bar, asc baz]
@@ -89,8 +89,8 @@ orderBy [desc (countRows :: SqlExpr (Value Int))]
 
 What's the type of `orderBy`?
 -}
-orderBy :: _
-orderBy = undefined
+d_orderBy :: _
+d_orderBy = undefined
 
 {-
 The (^.) and (?.) projection operators take us from an `Entity` to a `Value` (both wrapped in `SqlExpr`), by using an `EntityField`.
@@ -104,7 +104,7 @@ The type of (^.) is:
 
 Given that, can you introduce `Maybe`s in the right places to produce the correct type for the (?.) operator? The `EntityField` argument type is unchanged.
 
-The answer/hint are named `EE03_project` instead of `EE03_(?.)`
+The answer/hint are named `EE3e_project` instead of `EE3e_(?.)`
 -}
 (?.) :: (PersistEntity val, PersistField typ) => _ -> EntityField val typ -> _
 (?.) = undefined
@@ -121,5 +121,5 @@ fullOuterJoin :: (ToFrom a a', ToFrom b b', ToMaybe a', ToMaybe b', HasOnClause 
 Uncomment the type signature to get started
 -}
 
--- leftJoin :: (ToFrom a a', ToFrom b b', _, HasOnClause rhs (_), rhs ~ (b, _ -> SqlExpr (Value Bool))) => a -> rhs -> From (_)
-leftJoin = undefined
+-- f_leftJoin :: (ToFrom a a', ToFrom b b', _, HasOnClause rhs (_), rhs ~ (b, _ -> SqlExpr (Value Bool))) => a -> rhs -> From (_)
+f_leftJoin = undefined

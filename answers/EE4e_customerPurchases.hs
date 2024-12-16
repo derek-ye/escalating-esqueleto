@@ -1,12 +1,12 @@
-module EE04_customerPurchases where
+module EE4e_customerPurchases where
 
 import Data.Coerce (coerce)
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-customerPurchases :: DB [(CustomerId, Dollar)]
-customerPurchases = do
+e_customerPurchases :: DB [(CustomerId, Dollar)]
+e_customerPurchases = do
   fmap coerce $ select $ do
     purchase <- from $ table @Purchase
 

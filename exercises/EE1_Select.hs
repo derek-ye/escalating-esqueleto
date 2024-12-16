@@ -1,4 +1,4 @@
-module EE01_Select where
+module EE1_Select where
 
 import Data.Coerce (coerce)
 import Data.Text (Text)
@@ -22,8 +22,8 @@ If you get stuck, you might want to read the hint in hints/EE01_allFlavors.md
 Once you're done, make sure to compare with the answer in answers/EE01_allFlavors.hs
 to see if there's any difference
 -}
-allFlavors :: DB [Entity Flavor]
-allFlavors = do
+a_allFlavors :: DB [Entity Flavor]
+a_allFlavors = do
   _
 
 {-
@@ -32,8 +32,8 @@ SELECT flavors.name FROM flavors;
 
 Ensure you do this flavor->name projection in SQL, not after the fact in Haskell.
 -}
-allFlavorNameValues :: DB [Value Text]
-allFlavorNameValues = do
+b_allFlavorNameValues :: DB [Value Text]
+b_allFlavorNameValues = do
   _
 
 {-
@@ -43,16 +43,16 @@ and can be unwrapped into its components via 'entityKey' and 'entityVal'.
 'Value' comes from esqueleto. Can you remove the 'Value' wrapper to return a
 plain '[Text]'? Start by copying the previous query.
 -}
-allFlavorNames :: DB [Text]
-allFlavorNames = do
+c_allFlavorNames :: DB [Text]
+c_allFlavorNames = do
   _
 
 {-
 Let's introduce WHERE clauses.
 A vegan just walked in. Provide all our dairy-free flavors.
 -}
-dairyFreeFlavors :: DB [Entity Flavor]
-dairyFreeFlavors = do
+d_dairyFreeFlavors :: DB [Entity Flavor]
+d_dairyFreeFlavors = do
   _
 
 {-
@@ -62,8 +62,8 @@ neapolitan <- runDB $ flavorIdsFromNames ["Chunky Chocolate", "Variegated Vanill
 
 Write a query that can take an argument of a list of flavor names, and get their IDs
 -}
-flavorIdsFromNames :: [Text] -> DB [FlavorId]
-flavorIdsFromNames flavorNames = do
+e_flavorIdsFromNames :: [Text] -> DB [FlavorId]
+e_flavorIdsFromNames flavorNames = do
   _
 
 {-
@@ -73,20 +73,6 @@ provided a favorite flavor?
 
 Fill in the type as well.
 -}
-customersWithoutBirthdaysWithFlavors :: _
-customersWithoutBirthdaysWithFlavors = do
-  _
-
-{-
-Our founder's birthday is April 17th, and we're running a special.
-Who are our customers with a 4/17 birthday?
-
-Again, for efficiency you should do all filtering in SQL,
-not after the fact in Haskell.
-
-This one is much harder than the exercises above. Feel free to add more imports.
-If you need a hint, see hints/EE01_customersSharingFoundersBirthday.md
--}
-customersSharingFoundersBirthday :: DB [Entity Customer]
-customersSharingFoundersBirthday = do
+f_customersWithoutBirthdaysWithFlavors :: _
+f_customersWithoutBirthdaysWithFlavors = do
   _

@@ -1,4 +1,4 @@
-module EE02_customerGroups where
+module EE2d_customerGroups where
 
 import Data.Coerce (coerce)
 import Database.Esqueleto.Experimental
@@ -6,8 +6,8 @@ import Database.Esqueleto.PostgreSQL
 import Schema
 import Types
 
-customerGroups :: DB [(CustomerGroupParentId, [CustomerId])]
-customerGroups = do
+d_customerGroups :: DB [(CustomerGroupParentId, [CustomerId])]
+d_customerGroups = do
   fmap coerce $ select $ do
     (customer :& _ :& customerGroupParent) <- from $
       table @Customer

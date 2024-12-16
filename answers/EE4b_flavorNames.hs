@@ -1,12 +1,13 @@
-module EE04_flavorNameValues where
+module EE4b_flavorNames where
 
+import Data.Coerce (coerce)
 import Data.Text (Text)
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-flavorNameValues :: DB [Value Text]
-flavorNameValues = do
-  select $ do
+b_flavorNames :: DB [Text]
+b_flavorNames = do
+  fmap coerce $ select $ do
     flavor <- from $ table @Flavor
     pure flavor.name

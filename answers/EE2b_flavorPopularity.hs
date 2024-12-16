@@ -1,4 +1,4 @@
-module EE02_flavorPopularity where
+module EE2b_flavorPopularity where
 
 import Data.Coerce (coerce)
 import Data.Text (Text)
@@ -6,8 +6,8 @@ import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-flavorPopularity :: DB [(Text, Int)]
-flavorPopularity = do
+b_flavorPopularity :: DB [(Text, Int)]
+b_flavorPopularity = do
   values <- select $ do
 
     -- This `_customer` and `flavor` are not the same as the ones in the `on` clause.

@@ -1,11 +1,11 @@
-module EE04_getChocolate where
+module EE4a_getChocolate where
 
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-getChocolate :: DB (Maybe (Entity Flavor))
-getChocolate = do
+a_getChocolate :: DB (Maybe (Entity Flavor))
+a_getChocolate = do
   selectOne $ do
     flavor <- from $ table @Flavor
     -- (==.) and missing `val`

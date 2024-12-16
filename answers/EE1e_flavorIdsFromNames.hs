@@ -1,4 +1,4 @@
-module EE01_flavorIdsFromNames where
+module EE1e_flavorIdsFromNames where
 
 import Data.Text (Text)
 import Data.Coerce (coerce)
@@ -6,8 +6,8 @@ import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-flavorIdsFromNames :: [Text] -> DB [FlavorId]
-flavorIdsFromNames flavorNames = do
+e_flavorIdsFromNames :: [Text] -> DB [FlavorId]
+e_flavorIdsFromNames flavorNames = do
   -- `fmap coerce` goes from DB `[Value FlavorId]` to `DB [FlavorId]`
   fmap coerce $ select $ do
     flavor <- from $ table @Flavor

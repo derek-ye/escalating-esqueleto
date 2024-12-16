@@ -1,11 +1,11 @@
-module EE01_dairyFreeFlavors where
+module EE1d_dairyFreeFlavors where
 
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-dairyFreeFlavors :: DB [Entity Flavor]
-dairyFreeFlavors = do
+d_dairyFreeFlavors :: DB [Entity Flavor]
+d_dairyFreeFlavors = do
   select $ do
     flavor <- from $ table @Flavor
     where_ flavor.dairyFree

@@ -1,4 +1,4 @@
-module EE02_largestGroup where
+module EE2c_largestGroup where
 
 import Database.Esqueleto.Experimental
 import Schema
@@ -7,8 +7,8 @@ import Types
 -- This answer uses a subquery `SELECT`
 -- There are other ways to accomplish the same thing,
 -- including using a Common Table Expression (CTE) with SQL's `WITH`
-largestGroup :: DB [Entity Customer]
-largestGroup = do
+c_largestGroup :: DB [Entity Customer]
+c_largestGroup = do
   let
     -- CustomerGroupParent of the largest group
     largestGroupParentId =

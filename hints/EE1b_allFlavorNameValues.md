@@ -1,8 +1,8 @@
-Try starting from the "extensible" answer to the `allFlavors` exercise:
+Try starting from the "extensible" answer to the `a_allFlavors` exercise:
 
 ```hs
-allFlavors :: DB [Entity Flavor]
-allFlavors = do
+a_allFlavors :: DB [Entity Flavor]
+a_allFlavors = do
   select $ do
     from $ table @Flavor
 ```

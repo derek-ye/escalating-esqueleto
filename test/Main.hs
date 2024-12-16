@@ -13,84 +13,82 @@ import Test.Hspec
 
 main :: IO ()
 main = hspec $ do
-  describe "EE00_StartingOut" $ do
-    it "iWantToLearnEsqueleto" $ do
-      Exercise.iWantToLearnEsqueleto `shouldBe` Answer.iWantToLearnEsqueleto
+  describe "EE0_StartingOut" $ do
+    it "a_iWantToLearnEsqueleto" $ do
+      Exercise.a_iWantToLearnEsqueleto `shouldBe` Answer.a_iWantToLearnEsqueleto
 
-  describe "EE01_Select" $ do
-    it "allFlavors" $ do
-      Exercise.allFlavors `shouldMatchListRunDB` Answer.allFlavors
+  describe "EE1_Select" $ do
+    it "a_allFlavors" $ do
+      Exercise.a_allFlavors `shouldMatchListRunDB` Answer.a_allFlavors
 
-    it "allFlavorNameValues" $ do
-      Exercise.allFlavorNameValues `shouldMatchListRunDB` Answer.allFlavorNameValues
+    it "b_allFlavorNameValues" $ do
+      Exercise.b_allFlavorNameValues `shouldMatchListRunDB` Answer.b_allFlavorNameValues
 
-    it "allFlavorNames" $ do
-      Exercise.allFlavorNames `shouldMatchListRunDB` Answer.allFlavorNames
+    it "c_allFlavorNames" $ do
+      Exercise.c_allFlavorNames `shouldMatchListRunDB` Answer.c_allFlavorNames
 
-    it "dairyFreeFlavors" $ do
-      Exercise.dairyFreeFlavors `shouldMatchListRunDB` Answer.dairyFreeFlavors
+    it "d_dairyFreeFlavors" $ do
+      Exercise.d_dairyFreeFlavors `shouldMatchListRunDB` Answer.d_dairyFreeFlavors
 
-    it "flavorIdsFromNames" $ do
+    it "e_flavorIdsFromNames" $ do
       let neapolitan = ["Chunky Chocolate", "Variegated Vanilla", "Smooth Strawberry"]
-      Exercise.flavorIdsFromNames neapolitan `shouldMatchListRunDB` Answer.flavorIdsFromNames neapolitan
+      Exercise.e_flavorIdsFromNames neapolitan `shouldMatchListRunDB` Answer.e_flavorIdsFromNames neapolitan
 
-    it "customersWithoutBirthdaysWithFlavors" $ do
-      Exercise.customersWithoutBirthdaysWithFlavors `shouldMatchListRunDB` Answer.customersWithoutBirthdaysWithFlavors
+    it "f_customersWithoutBirthdaysWithFlavors" $ do
+      Exercise.f_customersWithoutBirthdaysWithFlavors `shouldMatchListRunDB` Answer.f_customersWithoutBirthdaysWithFlavors
 
-    it "customersSharingFoundersBirthday" $ do
-      Exercise.customersSharingFoundersBirthday `shouldMatchListRunDB` Answer.customersSharingFoundersBirthday
+  describe "EE2_Join" $ do
+    it "a_favoriteFlavors" $ do
+      Exercise.a_favoriteFlavors `shouldMatchListRunDB` Answer.a_favoriteFlavors
 
-  describe "EE02_Join" $ do
-    it "favoriteFlavors" $ do
-      Exercise.favoriteFlavors `shouldMatchListRunDB` Answer.favoriteFlavors
+    it "b_flavorPopularity" $ do
+      Exercise.b_flavorPopularity `shouldBeRunDB` Answer.b_flavorPopularity
 
-    it "flavorPopularity" $ do
-      Exercise.flavorPopularity `shouldBeRunDB` Answer.flavorPopularity
+    it "c_largestGroup" $ do
+      Exercise.c_largestGroup `shouldMatchListRunDB` Answer.c_largestGroup
 
-    it "largestGroup" $ do
-      Exercise.largestGroup `shouldMatchListRunDB` Answer.largestGroup
+    it "d_customerGroups" $ do
+      Exercise.d_customerGroups `shouldMatchMapRunDB` Answer.d_customerGroups
 
-    it "customerGroups" $ do
-      Exercise.customerGroups `shouldMatchMapRunDB` Answer.customerGroups
-
-  describe "EE03_TypeZoo" $ do
+  describe "EE3_TypeZoo" $ do
 
     -- Because these exercises are at the type level and are pretty complicated, it's probably nicer to check by hand.
     -- Just change False to True when your type signature is correct, to check off that test as completed.
 
-    it "runDB" $ do
+    it "a_runDB" $ do
       checkedByHand False
 
-    it "select" $ do
+    it "b_select" $ do
       checkedByHand False
 
-    it "val" $ do
+    it "c_val" $ do
       checkedByHand False
 
-    it "orderBy" $ do
+    it "d_orderBy" $ do
       checkedByHand False
 
-    it "(?.)" $ do
+    -- (?.)
+    it "e_project" $ do
       checkedByHand False
 
-    it "leftJoin" $ do
+    it "f_leftJoin" $ do
       checkedByHand False
 
-  describe "EE04_Errors" $ do
-    it "getChocolate" $ do
-      Exercise.getChocolate `shouldBeRunDB` Answer.getChocolate
+  describe "EE4_Errors" $ do
+    it "a_getChocolate" $ do
+      Exercise.a_getChocolate `shouldBeRunDB` Answer.a_getChocolate
 
-    it "flavorNames" $ do
-      Exercise.flavorNames `shouldMatchListRunDB` Answer.flavorNames
+    it "b_flavorNames" $ do
+      Exercise.b_flavorNames `shouldMatchListRunDB` Answer.b_flavorNames
 
-    it "flavorNameValues" $ do
-      Exercise.flavorNameValues `shouldMatchListRunDB` Answer.flavorNameValues
+    it "c_flavorNameValues" $ do
+      Exercise.c_flavorNameValues `shouldMatchListRunDB` Answer.c_flavorNameValues
 
-    it "mostPopularFlavor" $ do
-      Exercise.mostPopularFlavor `shouldBeRunDB` Answer.mostPopularFlavor
+    it "d_mostPopularFlavor" $ do
+      Exercise.d_mostPopularFlavor `shouldBeRunDB` Answer.d_mostPopularFlavor
 
-    it "customerPurchases" $ do
-      Exercise.customerPurchases `shouldMatchListRunDB` Answer.customerPurchases
+    it "e_customerPurchases" $ do
+      Exercise.e_customerPurchases `shouldMatchListRunDB` Answer.e_customerPurchases
 
 checkedByHand :: Bool -> IO ()
 checkedByHand False = expectationFailure "Check this exercise by hand, then change False to True in the tests to mark it as completed."

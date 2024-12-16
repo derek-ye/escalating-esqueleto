@@ -1,11 +1,11 @@
-module EE02_favoriteFlavors where
+module EE2a_favoriteFlavors where
 
 import Database.Esqueleto.Experimental
 import Schema
 import Types
 
-favoriteFlavors :: DB [(Entity Customer, Maybe (Entity Flavor))]
-favoriteFlavors = do
+a_favoriteFlavors :: DB [(Entity Customer, Maybe (Entity Flavor))]
+a_favoriteFlavors = do
   select $ do
     (customer :& flavor) <- from $
       table @Customer `leftJoin` table @Flavor
