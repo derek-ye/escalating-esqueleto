@@ -92,7 +92,7 @@ instance PathPiece UUID where
   fromPathPiece = fromText
 
 
--- Email
+-- Email. With a regex for usage with the smart constructor below
 newtype Email = Email Text
   deriving stock (Show, Lift)
   deriving newtype (Eq, Ord)
@@ -137,7 +137,7 @@ compileEmail =
       Just email -> [|$(lift email)|]
 
 
--- Dollar
+-- Dollar. Demonstrates a newtype corresponding to a specific postgres type
 newtype Dollar = Dollar { unDollar :: Centi }
   deriving stock (Show)
   deriving newtype (PersistField)
@@ -147,7 +147,7 @@ instance PersistFieldSql Dollar where
   sqlType _ = SqlOther "dollar"
 
 
--- PurchaseKind
+-- PurchaseKind. Haskell ADT corresponding with an enum in postgres
 data PurchaseKind
   = Cash
   | Credit
@@ -159,8 +159,7 @@ data PurchaseKind
 $(derivePostgresEnum ''PurchaseKind "purchase_kind")
 
 
--- Value
--- This is Aeson's Value (representing a JSON blob), not Esqueleto's Value
+-- Value. This is Aeson's Value (representing a JSON blob), not Esqueleto's Value
 instance PersistField Aeson.Value where
   toPersistValue value = PersistText $ cs $ Aeson.encode value
   fromPersistValue (PersistText t) = case Aeson.eitherDecode (cs t) of

@@ -1,6 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
 
--- This module copied from the culture site's Culture.Database.Persist.TH
 module DerivePostgresEnumTH (derivePostgresEnum) where
 
 import Prelude
@@ -22,8 +21,6 @@ import Language.Haskell.TH.Syntax (Lift(..))
 --     * Values should match the enum value in Postgres exactly.
 derivePostgresEnum :: Name -> String -> Q [Dec]
 derivePostgresEnum s postgresType = do
-  -- This code was done by taking the 'derivePersistField' code and manually inlining all the internal functions it calls
-  -- Ideally we can get this merged and just use it: https://github.com/yesodweb/persistent/issues/792
   ss <- [|SqlOther (T.pack $(lift postgresType))|]
   tpv <- [|PersistLiteral_ Escaped . S8.pack . show|]
   fpv <- [|\dt v ->
