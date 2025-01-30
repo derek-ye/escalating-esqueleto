@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1f_customersWithoutBirthdaysWithFlavors where
 
 import Data.Coerce (coerce)

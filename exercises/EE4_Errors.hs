@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 {-# OPTIONS_GHC -fdefer-type-errors #-}
 
 module EE4_Errors where

@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE4d_mostPopularFlavor where
 
 import Data.Coerce (coerce)

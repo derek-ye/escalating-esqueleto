@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE4e_customerPurchases where
 
 import Data.Coerce (coerce)

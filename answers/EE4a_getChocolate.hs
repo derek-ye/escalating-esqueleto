@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE4a_getChocolate where
 
 import Database.Esqueleto.Experimental

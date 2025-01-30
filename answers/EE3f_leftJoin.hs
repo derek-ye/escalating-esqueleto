@@ -1,3 +1,5 @@
+{- HLINT ignore "Use camelCase" -}
+{-# LANGUAGE TypeOperators #-}
 module EE3f_leftJoin where
 
 import Database.Esqueleto.Experimental

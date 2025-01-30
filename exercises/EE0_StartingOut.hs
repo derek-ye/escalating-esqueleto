@@ -1,3 +1,5 @@
+{- HLINT ignore "Use camelCase" -}
+
 module EE0_StartingOut where
 
 -- To ensure your setup is working, replace the typed hole below with a boolean value

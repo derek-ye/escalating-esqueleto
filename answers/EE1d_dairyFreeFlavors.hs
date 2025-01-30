@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1d_dairyFreeFlavors where
 
 import Database.Esqueleto.Experimental

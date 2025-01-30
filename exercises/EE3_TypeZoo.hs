@@ -1,6 +1,6 @@
+{- HLINT ignore "Use camelCase" -}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE ImportQualifiedPost #-}
 
 module EE3_TypeZoo where
 
@@ -10,6 +10,7 @@ import Database.Esqueleto.Experimental.From (ToFrom)
 import Database.Esqueleto.Experimental.From.Join (HasOnClause)
 import Database.Esqueleto.Internal.Internal (SqlSelect)
 import Types
+import Control.Monad.Reader (ReaderT)
 
 {-
 The goal of this module is to get you comfortable with some of the many types used in the esqueleto library,
@@ -64,9 +65,9 @@ Finally, `:&` helps us construct joins. Its precedence is to the left.
 -}
 
 {-
-`select` returns a `DB` action to grab us a list of rows, and takes an argument...which is up to you to figure out
+`select` returns a `ReaderT backend m` action (which is the same as `DB`) to grab us a list of rows, and takes an argument...which is up to you to figure out
 -}
-b_select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> DB _
+b_select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> ReaderT backend m _
 b_select = undefined
 
 {-

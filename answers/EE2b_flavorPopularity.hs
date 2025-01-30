@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE2b_flavorPopularity where
 
 import Data.Coerce (coerce)

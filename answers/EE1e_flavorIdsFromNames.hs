@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1e_flavorIdsFromNames where
 
 import Data.Text (Text)

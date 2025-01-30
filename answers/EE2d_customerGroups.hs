@@ -1,3 +1,5 @@
+{- HLINT ignore "Use camelCase" -}
+{- HLINT ignore "Fuse on/on" -}
 module EE2d_customerGroups where
 
 import Data.Coerce (coerce)
@@ -16,4 +18,4 @@ d_customerGroups = do
         `innerJoin` table @CustomerGroupParent
           `on` (\(_ :& customerLink :& customerGroupParent) -> customerLink.parentId ==. customerGroupParent.id)
     groupBy customerGroupParent.id
-    pure $ (customerGroupParent.id, maybeArray $ arrayAgg customer.id)
+    pure (customerGroupParent.id, maybeArray $ arrayAgg customer.id)
