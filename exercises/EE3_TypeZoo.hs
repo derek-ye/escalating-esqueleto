@@ -66,7 +66,7 @@ Finally, `:&` helps us construct joins. Its precedence is to the left.
 {-
 `select` returns a `DB` action to grab us a list of rows, and takes an argument...which is up to you to figure out
 -}
-b_select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> DB _
+b_select :: (SqlSelect a r, MonadIO m, SqlBackendCanRead backend) => _ -> ReaderT backend m _
 b_select = undefined
 
 {-
