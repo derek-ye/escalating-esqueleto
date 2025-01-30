@@ -1,6 +1,6 @@
+{- HLINT ignore "Use camelCase" -}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE ImportQualifiedPost #-}
 
 module EE3_TypeZoo where
 

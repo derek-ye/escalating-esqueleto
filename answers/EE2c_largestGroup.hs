@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE2c_largestGroup where
 
 import Database.Esqueleto.Experimental

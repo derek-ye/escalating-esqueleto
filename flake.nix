@@ -29,6 +29,7 @@
               hspkgs.hlint
               pkgs.bashInteractive
               pkgs.pcre
+              (pkgs.haskell-language-server.override { supportedGhcVersions = [ "96" ]; })
               pkgs.postgresql
               pkgs.fswatch
             ];

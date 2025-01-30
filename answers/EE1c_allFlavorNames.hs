@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1c_allFlavorNames where
 
 import Data.Coerce (coerce)

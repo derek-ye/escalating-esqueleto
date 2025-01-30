@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE3c_val where
 
 import Database.Esqueleto.Experimental

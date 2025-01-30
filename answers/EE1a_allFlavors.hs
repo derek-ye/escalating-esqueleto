@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1a_allFlavors where
 
 import Database.Esqueleto.Experimental

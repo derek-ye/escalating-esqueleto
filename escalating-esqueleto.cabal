@@ -71,6 +71,12 @@ library escalating-esqueleto-answers
                , EE2b_flavorPopularity
                , EE2c_largestGroup
                , EE2d_customerGroups
+               , EE3a_runDB
+               , EE3b_select
+               , EE3c_val
+               , EE3d_orderBy
+               , EE3e_project
+               , EE3f_leftJoin
                , EE4a_getChocolate
                , EE4b_flavorNames
                , EE4c_flavorNameValues

@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE1_Select where
 
 import Data.Coerce (coerce)

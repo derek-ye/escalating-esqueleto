@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE2_Join where
 
 import Data.Coerce (coerce)

@@ -1,3 +1,4 @@
+{- HLINT ignore "Use camelCase" -}
 module EE3a_runDB where
 
 import Types
