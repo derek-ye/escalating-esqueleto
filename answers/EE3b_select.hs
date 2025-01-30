@@ -1,4 +1,5 @@
 {- HLINT ignore "Use camelCase" -}
+{-# LANGUAGE FlexibleContexts #-}
 module EE3b_select where
 
 import Database.Esqueleto.Experimental

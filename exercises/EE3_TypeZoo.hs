@@ -10,6 +10,7 @@ import Database.Esqueleto.Experimental.From (ToFrom)
 import Database.Esqueleto.Experimental.From.Join (HasOnClause)
 import Database.Esqueleto.Internal.Internal (SqlSelect)
 import Types
+import Control.Monad.Reader (ReaderT)
 
 {-
 The goal of this module is to get you comfortable with some of the many types used in the esqueleto library,
