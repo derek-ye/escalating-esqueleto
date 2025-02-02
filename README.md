@@ -1,12 +1,14 @@
 # Escalating Esqueleto
 
-Esqueleto is a library that lets us write SQL queries with Haskell syntax and typechecking.
+[Esqueleto](https://hackage.haskell.org/package/esqueleto) is a library that lets us write SQL queries with Haskell syntax and typechecking.
 
-This repo is a collection of esqueleto exercises. They come with explanatory comments, a test suite, and sample answers.
+This repo is a collection of Esqueleto exercises. They come with explanatory comments, a test suite, and sample answers.
 
-Our goal is to be able to see through any esqueleto query to the SQL underneath. Call it esq-ray vision.
+Our goal is to be able to see through any Esqueleto query to the SQL underneath. Call it esq-ray vision.
 
 ## Getting Started
+
+You'll need to have the [Nix](https://nixos.org/download/) package manager installed for `nix develop` to work.
 
 ### Database setup
 
@@ -62,13 +64,13 @@ FROM "test"
 
 ### Hints
 
-There are hints for some of the exercises in the `hints/` directory, if you get stuck.
+There are hints for the exercises in the `hints/` directory, if you get stuck.
 
 You could also read these for additional commentary after completing an exercise.
 
 ### Poking around in the database
 
-Once setup is complete, you can check out the current state of the database with `psql`. This might be useful to write or validate raw SQL queries, but I encourage you to start thinking in esqueleto directly rather than always translating.
+Once setup is complete, you can check out the current state of the database with `psql`. This might be useful to write or validate raw SQL queries, but I encourage you to start thinking in Esqueleto directly rather than always translating.
 
 ```
 make psql
