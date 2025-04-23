@@ -25,9 +25,10 @@ to see if there's any difference
 -}
 a_allFlavors :: DB [Entity Flavor]
 a_allFlavors = do
-  _
+  select $ from $ table @Flavor
 
 {-
+
 Actually I just want the flavor name values. That would be:
 SELECT flavors.name FROM flavors;
 
@@ -35,8 +36,10 @@ Ensure you do this flavor->name projection in SQL, not after the fact in Haskell
 -}
 b_allFlavorNameValues :: DB [Value Text]
 b_allFlavorNameValues = do
-  _
-
+  select $ do
+    flavor <- from $ table @Flavor
+    pure flavor.name
+  
 {-
 Both queries above return lists of wrapped types. 'Entity' comes from persistent,
 and can be unwrapped into its components via 'entityKey' and 'entityVal'.
@@ -46,7 +49,10 @@ plain '[Text]'? Start by copying the previous query.
 -}
 c_allFlavorNames :: DB [Text]
 c_allFlavorNames = do
-  _
+  vals <- select $ do
+    flavor <- from $ table @Flavor
+    pure $ flavor
+  pure $ flavorName <$> entityVal <$> vals
 
 {-
 Let's introduce WHERE clauses.
@@ -54,7 +60,10 @@ A vegan just walked in. Provide all our dairy-free flavors.
 -}
 d_dairyFreeFlavors :: DB [Entity Flavor]
 d_dairyFreeFlavors = do
-  _
+  select $ do
+    flavor <- from $ table @Flavor
+    where_ $ flavor.dairyFree ==. val True
+    pure flavor
 
 {-
 It's often convenient to look up FlavorIds from flavor names. For example:

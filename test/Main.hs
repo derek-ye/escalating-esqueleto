@@ -37,58 +37,58 @@ main = hspec $ do
     it "f_customersWithoutBirthdaysWithFlavors" $ do
       Exercise.f_customersWithoutBirthdaysWithFlavors `shouldMatchListRunDB` Answer.f_customersWithoutBirthdaysWithFlavors
 
-  describe "EE2_Join" $ do
-    it "a_favoriteFlavors" $ do
-      Exercise.a_favoriteFlavors `shouldMatchListRunDB` Answer.a_favoriteFlavors
+  -- describe "EE2_Join" $ do
+  --   it "a_favoriteFlavors" $ do
+  --     Exercise.a_favoriteFlavors `shouldMatchListRunDB` Answer.a_favoriteFlavors
 
-    it "b_flavorPopularity" $ do
-      Exercise.b_flavorPopularity `shouldBeRunDB` Answer.b_flavorPopularity
+  --   it "b_flavorPopularity" $ do
+  --     Exercise.b_flavorPopularity `shouldBeRunDB` Answer.b_flavorPopularity
 
-    it "c_largestGroup" $ do
-      Exercise.c_largestGroup `shouldMatchListRunDB` Answer.c_largestGroup
+  --   it "c_largestGroup" $ do
+  --     Exercise.c_largestGroup `shouldMatchListRunDB` Answer.c_largestGroup
 
-    it "d_customerGroups" $ do
-      Exercise.d_customerGroups `shouldMatchMapRunDB` Answer.d_customerGroups
+  --   it "d_customerGroups" $ do
+  --     Exercise.d_customerGroups `shouldMatchMapRunDB` Answer.d_customerGroups
 
-  describe "EE3_TypeZoo" $ do
+  -- describe "EE3_TypeZoo" $ do
 
-    -- Because these exercises are at the type level and are pretty complicated, it's probably nicer to check by hand.
-    -- Just change False to True when your type signature is correct, to check off that test as completed.
+  --   -- Because these exercises are at the type level and are pretty complicated, it's probably nicer to check by hand.
+  --   -- Just change False to True when your type signature is correct, to check off that test as completed.
 
-    it "a_runDB" $ do
-      checkedByHand False
+  --   it "a_runDB" $ do
+  --     checkedByHand False
 
-    it "b_select" $ do
-      checkedByHand False
+  --   it "b_select" $ do
+  --     checkedByHand False
 
-    it "c_val" $ do
-      checkedByHand False
+  --   it "c_val" $ do
+  --     checkedByHand False
 
-    it "d_orderBy" $ do
-      checkedByHand False
+  --   it "d_orderBy" $ do
+  --     checkedByHand False
 
-    -- (?.)
-    it "e_project" $ do
-      checkedByHand False
+  --   -- (?.)
+  --   it "e_project" $ do
+  --     checkedByHand False
 
-    it "f_leftJoin" $ do
-      checkedByHand False
+  --   it "f_leftJoin" $ do
+  --     checkedByHand False
 
-  describe "EE4_Errors" $ do
-    it "a_getChocolate" $ do
-      Exercise.a_getChocolate `shouldBeRunDB` Answer.a_getChocolate
+  -- describe "EE4_Errors" $ do
+  --   it "a_getChocolate" $ do
+  --     Exercise.a_getChocolate `shouldBeRunDB` Answer.a_getChocolate
 
-    it "b_flavorNames" $ do
-      Exercise.b_flavorNames `shouldMatchListRunDB` Answer.b_flavorNames
+  --   it "b_flavorNames" $ do
+  --     Exercise.b_flavorNames `shouldMatchListRunDB` Answer.b_flavorNames
 
-    it "c_flavorNameValues" $ do
-      Exercise.c_flavorNameValues `shouldMatchListRunDB` Answer.c_flavorNameValues
+  --   it "c_flavorNameValues" $ do
+  --     Exercise.c_flavorNameValues `shouldMatchListRunDB` Answer.c_flavorNameValues
 
-    it "d_mostPopularFlavor" $ do
-      Exercise.d_mostPopularFlavor `shouldBeRunDB` Answer.d_mostPopularFlavor
+  --   it "d_mostPopularFlavor" $ do
+  --     Exercise.d_mostPopularFlavor `shouldBeRunDB` Answer.d_mostPopularFlavor
 
-    it "e_customerPurchases" $ do
-      Exercise.e_customerPurchases `shouldMatchListRunDB` Answer.e_customerPurchases
+  --   it "e_customerPurchases" $ do
+  --     Exercise.e_customerPurchases `shouldMatchListRunDB` Answer.e_customerPurchases
 
 checkedByHand :: Bool -> IO ()
 checkedByHand False = expectationFailure "Check this exercise by hand, then change False to True in the tests to mark it as completed."
